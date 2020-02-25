@@ -1,7 +1,7 @@
 {
-  "name": "@propero/ts-library-template",
+  "name": "@propero/typescript-transform-vue-templates",
   "version": "0.0.0",
-  "description": "Template for Typescript Libraries",
+  "description": "Transform Vue template strings into render functions",
   "since": "2020",
   "main": "dist/main.cjs.js",
   "module": "dist/main.esm.js",
@@ -17,10 +17,9 @@
     "clean": "rimraf dist temp docs coverage",
     "test": "jest",
     "lint": "eslint --ignore-path .gitignore --ext .ts .",
-    "lint:fix": "eslint --ignore-path .gitignore --ext .ts --fix .",
-    "postinstall": "ts-node postinstall.ts"
+    "lint:fix": "eslint --ignore-path .gitignore --ext .ts --fix ."
   },
-  "keywords": [],
+  "keywords": ["vue", "template", "typescript", "transformer", "propero"],
   "author": "Propero Team <team@propero.dev>",
   "license": "MIT",
   "devDependencies": {
@@ -38,11 +37,9 @@
     "@semantic-release/npm": "^6.0.0",
     "@semantic-release/release-notes-generator": "^7.3.5",
     "@types/dotenv-flow": "^3.0.0",
-    "@types/is-ci": "^2.0.0",
     "@types/jest": "^24.9.0",
     "@types/lodash": "^4.14.149",
     "@types/node": "^13.7.1",
-    "@types/promptly": "^3.0.0",
     "@types/webpack": "^4.41.6",
     "@types/webpack-dev-server": "^3.10.0",
     "@types/webpack-env": "^1.15.1",
@@ -56,13 +53,11 @@
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-prettier": "^3.1.2",
     "husky": "^4.2.3",
-    "is-ci": "^2.0.0",
     "jest": "^25.1.0",
     "jest-preset-typescript": "^1.2.0",
     "lint-staged": "^10.0.1",
     "lodash": "^4.17.15",
     "prettier": "^1.19.1",
-    "promptly": "^3.0.3",
     "rollup": "^1.29.1",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-json": "^4.0.0",
@@ -97,15 +92,15 @@
     }
   },
   "directories": {
-    "doc": "docs"
+    "test": "test"
   },
   "dependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/propero-oss/ts-library-template.git"
+    "url": "git+https://github.com/propero-oss/typescript-transform-vue-templates.git"
   },
   "bugs": {
-    "url": "https://github.com/propero-oss/ts-library-template/issues"
+    "url": "https://github.com/propero-oss/typescript-transform-vue-templates/issues"
   },
-  "homepage": "https://github.com/propero-oss/ts-library-template#readme"
+  "homepage": "https://github.com/propero-oss/typescript-transform-vue-templates#readme"
 }
