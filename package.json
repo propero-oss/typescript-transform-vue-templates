@@ -16,12 +16,24 @@
     "build": "rollup -c rollup.config.js",
     "clean": "rimraf dist temp docs coverage",
     "test": "jest",
+    "test:watch": "jest --watchAll",
     "lint": "eslint --ignore-path .gitignore --ext .ts .",
     "lint:fix": "eslint --ignore-path .gitignore --ext .ts --fix ."
   },
-  "keywords": ["vue", "template", "typescript", "transformer", "propero"],
+  "keywords": [
+    "vue",
+    "template",
+    "typescript",
+    "transformer",
+    "propero"
+  ],
   "author": "Propero Team <team@propero.dev>",
   "license": "MIT",
+  "dependencies": {
+    "@babel/core": "^7.8.4",
+    "typescript": "^3.7.5",
+    "vue-template-compiler": "^2.6.11"
+  },
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
@@ -67,7 +79,6 @@
     "semantic-release": "^16.0.2",
     "ts-jest": "^25.2.1",
     "ts-node": "^8.6.2",
-    "typescript": "^3.7.5",
     "webpack": "^4.41.6",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3"
@@ -94,7 +105,6 @@
   "directories": {
     "test": "test"
   },
-  "dependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/propero-oss/typescript-transform-vue-templates.git"
