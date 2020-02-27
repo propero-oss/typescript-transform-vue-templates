@@ -1,37 +1,23 @@
-import { expr } from "src/template";
 import { transpileTemplate } from "src/transpile-template";
-import {
-  Identifier,
-  isIdentifier,
-  isStringLiteralLike,
-  ObjectLiteralExpression,
-  PropertyAssignment,
-  SyntaxKind
-} from "typescript";
-
-
+import { Identifier, isIdentifier, isStringLiteralLike, PropertyAssignment, SyntaxKind, TransformationContext } from "typescript";
 
 export type VisitorMap = {
-  [K in SyntaxKind]?: (node: any) => any;
+  [K in SyntaxKind]?: (node: any, visitor: any, context: TransformationContext) => any;
 };
 
 export const visitorMap: VisitorMap = {
-  [SyntaxKind.PropertyAssignment](node: PropertyAssignment) {
-    const { name, initializer } = node;
-    if (!isTemplateIdentifier(name)) return node;
-    if (!isStringLiteralLike(initializer)) return node;
-    const text = copyText(initializer.text);
-    const compiled = transpileTemplate(text);
-    return expr(compiled).expression<ObjectLiteralExpression>().properties[0];
+  [SyntaxKind.PropertyAssignment](node: PropertyAssignment, next) {
+    const text = extractTemplate(node);
+    if (!text) return next();
+    const { node: render } = transpileTemplate(text);
+    return render ? next(render) : next();
   }
 };
 
-function isTemplateIdentifier(name: any): name is Identifier & { escapedText: "template" } {
-  return isIdentifier(name) && name.escapedText === "template";
+function extractTemplate(node: PropertyAssignment) {
+  return isTemplateIdentifier(node.name) && isStringLiteralLike(node.initializer) ? node.initializer.text : false;
 }
 
-function copyText(text: string) {
-  let copy = "";
-  for (const char of text) copy += char.charAt(0);
-  return copy;
+function isTemplateIdentifier(name: any): name is Identifier & { escapedText: "template" } {
+  return isIdentifier(name) && name.escapedText === "template";
 }
