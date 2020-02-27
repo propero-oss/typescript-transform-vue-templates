@@ -31,6 +31,7 @@
   "license": "MIT",
   "dependencies": {
     "@babel/core": "^7.8.4",
+    "@babel/types": "^7.8.3",
     "@propero/typescript-transformer-source-templates": "^1.1.0",
     "typescript": "^3.7.5",
     "vue-template-compiler": "^2.6.11"

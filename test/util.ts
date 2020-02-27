@@ -15,7 +15,3 @@ export function transpile(source: string) {
 export function expectTranspile(source: string) {
   return expect(transpile(source));
 }
-
-export function logTranspile(source: string) {
-  console.log(transpile(source));
-}
